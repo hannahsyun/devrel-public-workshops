@@ -187,10 +187,10 @@ def etl_galaxies():
     create_galaxy_table_in_duckdb_obj = create_galaxy_table_in_duckdb()
     extract_galaxy_data_obj = extract_galaxy_data()
     transform_galaxy_data_obj = transform_galaxy_data(extract_galaxy_data_obj)
-    load_galaxy_data_obj = load_galaxy_data(transform_galaxy_data_obj)
+    load_galaxy_data_obj = load_galaxy_data(create_galaxy_table_in_duckdb_obj)
 
     chain(
-        transform_galaxy_data_obj, create_galaxy_table_in_duckdb_obj, load_galaxy_data_obj, print_loaded_galaxies()
+        transform_galaxy_data_obj, create_galaxy_table_in_duckdb_obj,load_galaxy_data_obj, print_loaded_galaxies()
     )
 
 etl_galaxies()
